@@ -1,2 +1,18 @@
 # first-project
-this the the trail repository
+
+\# First Project 
+
+
+
+About
+
+This is my first project using GitHub and Python.
+
+
+
+How to run
+
+bash
+
+py hello.py
+
