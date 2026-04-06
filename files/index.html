@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tejkaran Maida — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== HOME PAGE SPECIFIC ===== */
+
+    .hero-wrap {
+      min-height: 520px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+      padding: 80px 48px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    #particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 14px;
+      font-weight: 500;
+      animation: fadeLeft 0.8s ease both;
+    }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 62px;
+      font-weight: 800;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 14px;
+      animation: fadeLeft 0.8s 0.15s ease both;
+    }
+
+    .hero-role {
+      font-size: 15px;
+      color: rgba(228, 224, 216, 0.4);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      animation: fadeLeft 0.8s 0.25s ease both;
+    }
+
+    .typed-line {
+      font-size: 15px;
+      color: var(--purple);
+      margin-bottom: 36px;
+      min-height: 22px;
+      animation: fadeLeft 0.8s 0.35s ease both;
+    }
+
+    .cursor {
+      animation: blink 1s infinite;
+      color: var(--cyan);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      animation: fadeLeft 0.8s 0.45s ease both;
+    }
+
+    /* ===== ORBIT ===== */
+    .orbit-wrap {
+      width: 180px;
+      height: 180px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeRight 0.8s 0.3s ease both;
+    }
+
+    .orbit-ring {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(56, 189, 248, 0.15);
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      top: 50%; left: 50%;
+      margin: -4px;
+      animation: spinOrbit 4s linear infinite;
+    }
+
+    .orbit-dot2 {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--purple);
+      top: 50%; left: 50%;
+      margin: -3px;
+      animation: spinOrbit 6s linear infinite reverse;
+    }
+
+    .orbit-center {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(168,85,247,0.15));
+      border: 0.5px solid rgba(56, 189, 248, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      animation: float 4s ease infinite;
+    }
+
+    @media (max-width: 768px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 40px;
+        gap: 40px;
+      }
+      .hero-name { font-size: 42px; }
+      .orbit-wrap { margin: 0 auto; }
+      .stats-bar { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 0.5px solid rgba(56,189,248,0.1); }
+      .stat:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="index.html">TM</a>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-wrap">
+    <div id="particles"></div>
+
+    <div class="hero-text">
+      <p class="hero-eyebrow">Full-Stack Portfolio</p>
+      <h1 class="hero-name">Tejkaran<br>Maida</h1>
+      <p class="hero-role">Software Developer &nbsp;·&nbsp; Web Enthusiast</p>
+      <p class="typed-line"><span id="typed"></span><span class="cursor">|</span></p>
+      <div class="hero-cta">
+        <a href="projects.html" class="btn-primary">View Projects</a>
+        <a href="contact.html" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="orbit-wrap">
+      <div class="orbit-ring"></div>
+      <div class="orbit-dot"></div>
+      <div class="orbit-dot2"></div>
+      <div class="orbit-center">TM</div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num" id="c1">0</div>
+      <div class="stat-label">Projects Built</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="c2">0</div>
+      <div class="stat-label">Months Learning</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="c3">0</div>
+      <div class="stat-label">Technologies</div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin-top: 64px;"></div>
+
+  <!-- MINI PROJECTS PREVIEW -->
+  <section class="section-pad">
+    <p class="section-eyebrow">Featured Work</p>
+    <h2 class="section-title">Recent Projects</h2>
+    <div class="proj-grid">
+      <a class="proj-card" href="projects.html">
+        <span class="proj-tag">HTML / CSS</span>
+        <div class="proj-num">01</div>
+        <h3>Project One</h3>
+        <p>A responsive landing page built with pure HTML and CSS. Mobile-first design approach.</p>
+      </a>
+      <a class="proj-card" href="projects.html">
+        <span class="proj-tag">JavaScript</span>
+        <div class="proj-num">02</div>
+        <h3>Project Two</h3>
+        <p>Interactive web app using vanilla JavaScript with DOM manipulation and local storage.</p>
+      </a>
+      <a class="proj-card" href="projects.html" style="border-style:dashed; border-color:rgba(168,85,247,0.25);">
+        <span class="proj-tag" style="background:rgba(168,85,247,0.1); color:var(--purple);">Coming Soon</span>
+        <div class="proj-num">03</div>
+        <h3>Next Project</h3>
+        <p>Currently in progress — building something exciting with React. Stay tuned!</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Tejkaran Maida</span>
+    <span>Built with HTML &amp; CSS</span>
+  </footer>
+
+  <script>
+    // Typing animation
+    const phrases = ['Building for the Web', 'Learning Every Day', 'HTML · CSS · JS', 'Creating Cool Stuff'];
+    let pi = 0, ci = 0, del = false;
+
+    function typeLoop() {
+      const el = document.getElementById('typed');
+      if (!el) return;
+      const phrase = phrases[pi];
+      if (!del) {
+        el.textContent = phrase.slice(0, ci + 1);
+        ci++;
+        if (ci === phrase.length) { del = true; setTimeout(typeLoop, 1400); return; }
+      } else {
+        el.textContent = phrase.slice(0, ci - 1);
+        ci--;
+        if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; }
+      }
+      setTimeout(typeLoop, del ? 55 : 90);
+    }
+    typeLoop();
+
+    // Count-up numbers
+    function countUp(id, target, dur) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      let start = 0;
+      const step = target / 60;
+      const t = dur / 60;
+      const iv = setInterval(() => {
+        start += step;
+        if (start >= target) { el.textContent = target; clearInterval(iv); }
+        else { el.textContent = Math.floor(start); }
+      }, t);
+    }
+    setTimeout(() => { countUp('c1', 5, 1200); countUp('c2', 18, 1400); countUp('c3', 8, 1000); }, 400);
+
+    // Floating particles
+    const pc = document.getElementById('particles');
+    if (pc) {
+      for (let i = 0; i < 18; i++) {
+        const d = document.createElement('div');
+        d.className = 'particle';
+        d.style.left = Math.random() * 100 + '%';
+        d.style.bottom = '0';
+        d.style.setProperty('--d', (3 + Math.random() * 5) + 's');
+        d.style.setProperty('--dl', (Math.random() * 4) + 's');
+        d.style.background = Math.random() > 0.5 ? '#38bdf8' : '#a855f7';
+        pc.appendChild(d);
+      }
+    }
+  </script>
+
+</body>
+</html>

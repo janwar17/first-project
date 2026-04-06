@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Tejkaran Maida</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== PROJECTS PAGE SPECIFIC ===== */
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      background: transparent;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      color: rgba(228, 224, 216, 0.45);
+      font-size: 12px;
+      font-family: 'Mulish', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.07);
+    }
+
+    /* Extended project card */
+    .proj-full-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .proj-card-full {
+      background: rgba(255, 255, 255, 0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      animation: scaleIn 0.6s ease both;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj-card-full:nth-child(2) { animation-delay: 0.08s; }
+    .proj-card-full:nth-child(3) { animation-delay: 0.16s; }
+    .proj-card-full:nth-child(4) { animation-delay: 0.24s; }
+    .proj-card-full:nth-child(5) { animation-delay: 0.32s; }
+
+    .proj-card-full:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-6px);
+    }
+
+    .proj-thumb {
+      height: 140px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(168,85,247,0.08));
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proj-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(56,189,248,0.03) 20px,
+        rgba(56,189,248,0.03) 21px
+      );
+    }
+
+    .proj-thumb-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.06);
+      position: relative;
+      z-index: 1;
+    }
+
+    .proj-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj-card-full .proj-tag { margin-bottom: 12px; }
+
+    .proj-card-full h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .proj-card-full p {
+      font-size: 13px;
+      color: rgba(228, 224, 216, 0.45);
+      line-height: 1.7;
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .proj-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 0.5px solid rgba(56, 189, 248, 0.08);
+    }
+
+    .proj-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .proj-link {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-decoration: none;
+      padding: 5px 12px;
+      border: 0.5px solid rgba(56, 189, 248, 0.3);
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .proj-link:hover {
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .proj-status {
+      font-size: 11px;
+      color: rgba(228, 224, 216, 0.25);
+      letter-spacing: 0.06em;
+    }
+
+    /* Coming soon card */
+    .proj-card-full.coming-soon {
+      border-style: dashed;
+      border-color: rgba(168, 85, 247, 0.2);
+    }
+
+    .proj-card-full.coming-soon:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+
+    .proj-card-full.coming-soon .proj-thumb {
+      background: linear-gradient(135deg, rgba(168,85,247,0.06), rgba(56,189,248,0.06));
+    }
+
+    @media (max-width: 768px) {
+      .proj-full-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="index.html">TM</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PROJECTS -->
+  <section class="section-pad">
+    <p class="section-eyebrow">My Work</p>
+    <h2 class="section-title">Projects</h2>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProj('all', this)">All</button>
+      <button class="filter-btn" onclick="filterProj('html', this)">HTML / CSS</button>
+      <button class="filter-btn" onclick="filterProj('js', this)">JavaScript</button>
+      <button class="filter-btn" onclick="filterProj('react', this)">React</button>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="proj-full-grid" id="proj-grid">
+
+      <div class="proj-card-full" data-tag="html">
+        <div class="proj-thumb">
+          <span class="proj-thumb-label">01</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-tag">HTML / CSS</span>
+          <h3>Project One</h3>
+          <p>A fully responsive landing page built with pure HTML and CSS. Focused on layout, typography, flexbox, grid, and mobile-first design principles.</p>
+          <div class="proj-footer">
+            <div class="proj-links">
+              <a href="#" class="proj-link">Live</a>
+              <a href="#" class="proj-link">GitHub</a>
+            </div>
+            <span class="proj-status">Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card-full" data-tag="js">
+        <div class="proj-thumb">
+          <span class="proj-thumb-label">02</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-tag">JavaScript</span>
+          <h3>Project Two</h3>
+          <p>An interactive web app using vanilla JavaScript. Features DOM manipulation, event handling, local storage, and dynamic UI updates.</p>
+          <div class="proj-footer">
+            <div class="proj-links">
+              <a href="#" class="proj-link">Live</a>
+              <a href="#" class="proj-link">GitHub</a>
+            </div>
+            <span class="proj-status">Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card-full" data-tag="html">
+        <div class="proj-thumb">
+          <span class="proj-thumb-label">03</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-tag">HTML / CSS</span>
+          <h3>Portfolio Website</h3>
+          <p>This portfolio itself — designed with a dark aurora aesthetic, CSS animations, multi-page navigation, and responsive layout across all devices.</p>
+          <div class="proj-footer">
+            <div class="proj-links">
+              <a href="index.html" class="proj-link">Live</a>
+              <a href="#" class="proj-link">GitHub</a>
+            </div>
+            <span class="proj-status">Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card-full" data-tag="js">
+        <div class="proj-thumb">
+          <span class="proj-thumb-label">04</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-tag">JavaScript</span>
+          <h3>Project Four</h3>
+          <p>Add your fourth project here. Describe what it does, what you built, and what you learned from making it.</p>
+          <div class="proj-footer">
+            <div class="proj-links">
+              <a href="#" class="proj-link">Live</a>
+              <a href="#" class="proj-link">GitHub</a>
+            </div>
+            <span class="proj-status">Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card-full coming-soon" data-tag="react">
+        <div class="proj-thumb">
+          <span class="proj-thumb-label" style="color:rgba(168,85,247,0.12);">05</span>
+        </div>
+        <div class="proj-body">
+          <span class="proj-tag" style="background:rgba(168,85,247,0.1); color:var(--purple);">Coming Soon</span>
+          <h3>React Project</h3>
+          <p>Currently in progress — building something exciting with React. A component-based application with hooks, state management, and API integration.</p>
+          <div class="proj-footer">
+            <div class="proj-links">
+              <span style="font-size:11px; color:rgba(228,224,216,0.25); letter-spacing:0.06em;">In Progress</span>
+            </div>
+            <span class="proj-status">~Q2 2026</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Tejkaran Maida</span>
+    <span>Built with HTML &amp; CSS</span>
+  </footer>
+
+  <script>
+    function filterProj(tag, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.proj-card-full').forEach(card => {
+        if (tag === 'all' || card.dataset.tag === tag) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

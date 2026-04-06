@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Tejkaran Maida</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== ABOUT PAGE SPECIFIC ===== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 15px;
+      color: rgba(228, 224, 216, 0.55);
+      line-height: 1.9;
+      font-weight: 300;
+      margin-bottom: 24px;
+      animation: fadeLeft 0.7s ease both;
+    }
+
+    .about-text:nth-child(2) { animation-delay: 0.1s; }
+
+    /* Avatar block */
+    .avatar-block {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 32px;
+      animation: fadeLeft 0.7s 0.2s ease both;
+    }
+
+    .avatar-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(56,189,248,0.2), rgba(168,85,247,0.2));
+      border: 1px solid rgba(56,189,248,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      animation: float 4s ease infinite;
+    }
+
+    .avatar-info h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .avatar-info p {
+      font-size: 13px;
+      color: rgba(228, 224, 216, 0.4);
+    }
+
+    /* Skills */
+    .skills-heading {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+
+    /* Tools badges */
+    .tools-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 36px;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .tool-badge {
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      color: rgba(228, 224, 216, 0.6);
+      letter-spacing: 0.04em;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .tool-badge:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Right column — timeline */
+    .timeline-heading {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 18px;
+      font-weight: 500;
+      animation: fadeRight 0.7s ease both;
+    }
+
+    /* Fun facts */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 36px;
+      animation: fadeRight 0.7s 0.3s ease both;
+    }
+
+    .fact-card {
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .fact-card:hover {
+      border-color: rgba(168, 85, 247, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .fact-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .fact-title {
+      font-size: 13px;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .fact-sub {
+      font-size: 12px;
+      color: rgba(228, 224, 216, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .facts-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="index.html">TM</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section-pad">
+    <p class="section-eyebrow">Who I Am</p>
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about-grid">
+
+      <!-- LEFT: Bio + Skills -->
+      <div>
+        <div class="avatar-block">
+          <div class="avatar-circle">TM</div>
+          <div class="avatar-info">
+            <h3>Tejkaran Maida</h3>
+            <p>Software Developer · India</p>
+          </div>
+        </div>
+
+        <p class="about-text">
+          I'm a beginner developer passionate about web development. I love turning ideas into
+          interactive experiences — every project teaches me something new about code, design,
+          and problem-solving.
+        </p>
+        <p class="about-text">
+          Currently focused on mastering HTML, CSS, and JavaScript fundamentals while exploring
+          modern frameworks like React. Always building, always learning.
+        </p>
+
+        <p class="skills-heading">Skills</p>
+        <div class="skill-list">
+          <div class="skill-row">
+            <div class="skill-top"><span class="skill-name">HTML &amp; CSS</span><span class="skill-pct">85%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:85%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span class="skill-name">JavaScript</span><span class="skill-pct">60%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:60%; animation-delay:0.15s;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span class="skill-name">React</span><span class="skill-pct">35%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:35%; animation-delay:0.3s;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-top"><span class="skill-name">Git &amp; GitHub</span><span class="skill-pct">50%</span></div>
+            <div class="skill-track"><div class="skill-fill" style="--w:50%; animation-delay:0.45s;"></div></div>
+          </div>
+        </div>
+
+        <div class="tools-wrap">
+          <span class="tool-badge">VS Code</span>
+          <span class="tool-badge">Chrome DevTools</span>
+          <span class="tool-badge">GitHub</span>
+          <span class="tool-badge">Figma</span>
+          <span class="tool-badge">Node.js</span>
+          <span class="tool-badge">npm</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: Timeline + Facts -->
+      <div>
+        <p class="timeline-heading">My Journey</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+            <div>
+              <div class="tl-year">2024</div>
+              <div class="tl-event">Started learning HTML &amp; CSS from scratch — built my first webpage</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+            <div>
+              <div class="tl-year">2025</div>
+              <div class="tl-event">Dove into JavaScript — built first interactive projects &amp; this portfolio</div>
+            </div>
+          </div>
+          <div class="tl-item" style="padding-bottom:0;">
+            <div class="tl-dot purple"></div>
+            <div>
+              <div class="tl-year purple">2026 →</div>
+              <div class="tl-event">Exploring React &amp; full-stack development — the journey continues</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="facts-grid">
+          <div class="fact-card">
+            <div class="fact-icon">💡</div>
+            <div class="fact-title">Fast Learner</div>
+            <div class="fact-sub">Pick up new concepts quickly</div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">🛠️</div>
+            <div class="fact-title">Builder</div>
+            <div class="fact-sub">Learn by doing, always</div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">🎯</div>
+            <div class="fact-title">Goal Driven</div>
+            <div class="fact-sub">Focused on real projects</div>
+          </div>
+          <div class="fact-card">
+            <div class="fact-icon">🌐</div>
+            <div class="fact-title">Open Source</div>
+            <div class="fact-sub">All code on GitHub</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Tejkaran Maida</span>
+    <span>Built with HTML &amp; CSS</span>
+  </footer>
+
+</body>
+</html>
